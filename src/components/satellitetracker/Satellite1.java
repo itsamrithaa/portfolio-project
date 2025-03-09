@@ -1,13 +1,21 @@
 package components.satellitetracker;
 
-public class SatelliteTracker {
+public class Satellite1 {
     // Representation for the object
     // Should units be metric or something larger because we are talking space? -- Need to determine
     private double x, y, z; // Position coordinates in space
     private double vx, vy, vz; // Velocity components
     private static final double GRAVITY = 9.81; // Placeholder for gravitational acceleration
 
-    public SatelliteTracker(double x, double y, double z, double vx, double vy,
+    /*
+     * Added these three constants to help with calculation of orbital speed and
+     * period
+     */
+    private static final double PI = 3.14159265;
+    private static final double G = 6.67430e-11; //
+    private static final double M = 5.972e24;
+
+    public Satellite1(double x, double y, double z, double vx, double vy,
             double vz) {
 
         // This is the constructor for SatelliteTracker object
@@ -41,6 +49,8 @@ public class SatelliteTracker {
         // need to look up formula to estimate orbital speed for stability
         // and compare it to threshold to return boolean for stability
         int estimate = 0;
+
+        // need to look up threshold
         int threshold = 0;
         boolean isStable = estimate > threshold;
         return isStable;
@@ -59,16 +69,25 @@ public class SatelliteTracker {
 
     public final double estimateOrbitalPeriod() {
         // need to look up formula for orbital period to estimate the satellite's orbit
-        double orbitalPeriod = 1.00;
+        double radius = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2)
+                + Math.pow(this.z, 2));
+        double orbitalPeriod = 2 * PI * Math.sqrt(Math.pow(radius, 3) / G * M);
         return orbitalPeriod;
     }
 
-    public final boolean willCollide(SatelliteTracker other) {
+    public final boolean willCollide(Satellite1 other) {
+
+        // Use distance formula for 3D -- Eucledian formula
 
         // Similar to isStable, estimate the distance between two satellites using formula
         // The way I set up the constructors, we can compare two satellites
         // Ex. we can use other.x or other.y to compare this.x or this.y
-        double distance = 100.00;
+        double xDistance = this.x - other.x;
+        double yDistance = this.y - other.y;
+        double zDistance = this.z - other.z;
+        double distance = Math.sqrt((xDistance * xDistance)
+                + (yDistance * yDistance) + (zDistance * zDistance));
+
         // need to look up threshold value for collision risk
         final double threshold = 192.2;
         boolean isClose = distance < threshold;
@@ -76,8 +95,8 @@ public class SatelliteTracker {
     }
 
     public static void main(String[] args) {
-        SatelliteTracker sat1 = new SatelliteTracker(7000, 0, 0, 0, 7.8, 0);
-        SatelliteTracker sat2 = new SatelliteTracker(7005, 0, 0, 0, 7.8, 0);
+        Satellite1 sat1 = new Satellite1(7000, 0, 0, 0, 7.8, 0);
+        Satellite1 sat2 = new Satellite1(7005, 0, 0, 0, 7.8, 0);
 
         sat1.updatePosition(60);
         sat2.updatePosition(60);
