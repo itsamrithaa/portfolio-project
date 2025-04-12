@@ -20,6 +20,23 @@ the following form: YYYY.0M.0D.
 - Updated implementation details for willCollide method
 - Introduced three final constants which is required for data manipulation in enhanced and kernel methods
 
+## [2025.02.20]
+
+### Added
+
+- Designed a proof of concept for SatelliteTracker component
+
+### Updated
+
+- No updates were made to the nature of the design. Just implemented existing methods.
+
+## [2025.02.06]
+
+### Added
+
+- Designed a SatelliteTracker component
+- Designed a MovieRecommender component
+- Designed a MusicRecap component
 
 ## [2024.12.30]
 
