@@ -8,6 +8,25 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.02.20]
+
+### Added
+
+- Designed a proof of concept for SatelliteTracker component
+
+### Updated
+
+- No updates were made to the nature of the design. Just implemented existing methods.
+
+## [2025.02.06]
+
+### Added
+
+- Designed a SatelliteTracker component
+- Designed a MovieRecommender component
+- Designed a MusicRecap component
+
+
 ## [2024.12.30]
 
 - Added table-based rubrics to all 6 parts of the project
