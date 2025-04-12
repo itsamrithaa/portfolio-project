@@ -1,12 +1,11 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Amrithaa Ashok Kumar
+- **Dot Number**: ashokkumar.15
+- **Due Date**: Feb 6
 
 ## Assignment Overview
 
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,7 +28,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -52,7 +50,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +64,6 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,15 +102,10 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+My interests include working out, listening to music, and watching sci-fi movies/TV shows. Academically, my interests are strongly rooted in Astronomy and Research.
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -122,7 +113,6 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -132,7 +122,6 @@ you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
 
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -200,68 +189,82 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: SatelliteTracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Orbital debris is a real problem, this component tracks the satellites in low Earth orbit to avoid apocalyptic outcomes.
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void updatePosition(double time)
+    - double[] getLiveLocation(): in coordinates
+    - boolean isStable(): ensures stable orbit
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void adjustVelocity(double force, double direction): Adjusts the object's velocity.
+    - double estimate OrbitalPeriod(): Returns the estimated time for a full orbit.
+    - boolean willCollide(SatelliteTracker object): Determines if two objects will collide.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, this component tracks live position so it must be mutable
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know yet but probably yes -- to perform calculations
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yeah for gravitational acceleration
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for ex adjustVelocity would use updatePosition
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: MovieRecommender
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Suggests sci fi movies based on how user has rated movies before
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addRating(String title, double rating) Stores user's rating for a sci-fi title
+    - Queue<String> getRecommendations(): Returns a Queue of recommended titles.
+    - boolean hasWatched(String movie): Checks if the user has already seen a movie.
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void narrowReccomendation(String subgenre): Narrows down recommendations (e.g., space opera, cyberpunk)
+    - void updatePreferences(Map<String, Integer> genreWeights): Adjusts recommendations based on interest
+    - Queue<String> getTrendingSciFi(): Returns currently popular sci-fi content.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes as the user's taste is something that constantly evolves
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, a class to store all data
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know yet
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes for example narrowReccomendation will modify getRecommendation
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: MusicRecap
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - Create a spotify wrapped style analysis of user's music taste
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - String getTopSong() return details of most played song
+    - Queue<String> getTopArtists() returns a rank of top artists
+    - Queue<String> getTopGenres() -> returns most listened-to genres
+    - double calculateListeningTime() -> computes total listening time over a given period.
+
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - String generateSummary()uses kernel methods to create a summary of the user’s music habits
+    - Map<String,String> getArtistStats(String artist) Returns detailed stats for a given artist (e.g., total listens, top songs)
+    - String compareWithOthersUser (MusicRecap user) compares two user's music taste
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes because music taste is evolving
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Definitely uses map to store artist stats
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - I don't know for sure but probably for each  genre?
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for example generateSummary() uses getTopSong(), getTopArtists(), getTopGenres(), and calculateListeningTime().
 
 ## Post-Assignment
 
@@ -269,8 +272,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -288,13 +289,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+## 2025.02.06
 
 ### Added
 
-- Designed a <!-- insert name of component 1 here --> component
-- Designed a <!-- insert name of component 2 here --> component
-- Designed a <!-- insert name of component 3 here --> component
+- Designed a SatelliteTracker component
+- Designed a MovieRecommender 
+- Designed a MusicRecap component
 ```
 
 Here `YYYY.MM.DD` would be the date of your submission, such as 2024.04.21.
@@ -309,8 +310,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
-
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
 this [Markdown to PDF guide][markdown-to-pdf-guide]. However, PDFs should be
@@ -319,11 +318,8 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
 
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
@@ -350,7 +346,6 @@ If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
 
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/
