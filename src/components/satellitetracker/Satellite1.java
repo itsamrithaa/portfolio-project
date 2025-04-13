@@ -44,6 +44,10 @@ public class Satellite1 {
         return new double[] { this.x, this.y, this.z };
     }
 
+    public final double[] getVelocity() {
+        return new double[] { this.vx, this.vy, this.vz };
+    }
+
     public final boolean isStable() {
 
         // need to look up formula to estimate orbital speed for stability

@@ -41,4 +41,13 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      *          value, or {@code false} otherwise
      */
     boolean isStable();
+
+    /**
+     * Reports the current velocity of the satellite in x, y, z directions.
+     *
+     * @return an array of {@code double} values: [vx, vy, vz]
+     * @requires this.vx, this.vy, and this.vz are initialized
+     * @ensures result[0] = vx, \result[1] = vy, \result[2] = vz
+     */
+    double[] getVelocity();
 }
