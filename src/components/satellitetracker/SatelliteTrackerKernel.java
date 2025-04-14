@@ -52,15 +52,6 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
     double[] getVelocity();
 
     /**
-     * Reports whether this object is a satellite.
-     *
-     * @return {@code true} if this object represents a satellite, {@code false}
-     *         otherwise
-     * @ensures result = (this is a satellite object)
-     */
-    boolean isSatellite();
-
-    /**
      * Reports whether this satellite is in orbit around Earth.
      *
      * @return {@code true} if this satellite orbits Earth, {@code false}
