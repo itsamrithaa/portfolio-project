@@ -2,7 +2,8 @@ package components.satellitetracker;
 
 /**
  * {@code SatelliteTracker} represented as two 3-element arrays of doubles: one
- * for position [x, y, z] and one for velocity [vx, vy, vz].
+ * for position [x, y, z] and one for velocity [vx, vy, vz] mimicking practices
+ * in Astrophysics and the space sciences.
  *
  * @convention |position| = 3 and |velocity| = 3 and elements must be finite
  *             real numbers. this.position[i] is in kilometers (km),
