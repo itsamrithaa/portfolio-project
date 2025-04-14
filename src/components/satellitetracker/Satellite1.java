@@ -1,11 +1,11 @@
 package components.satellitetracker;
 
 public class Satellite1 extends SatelliteTrackerSecondary {
-    // Representation for the object
-    // Should units be metric or something larger because we are talking space? -- Need to determine
-    // Position coordinates in space
-    private double[] position;
-    private double[] velocity; // Velocity components
+
+    /*
+     * Private members --------------------------------------------------------
+     */
+
     /*
      * Added these constants to help with calculation of orbital speed and
      * period
@@ -17,12 +17,83 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     private static final double EARTH_RADIUS_KM = 6371.0;
     private static final double MAX_ORBIT_RADIUS_KM = 384400.0;
 
-    public Satellite1(double x, double y, double z, double vx, double vy,
-            double vz) {
+    /**
+     * Representation of {@code this}.
+     */
 
-        // This is the constructor for SatelliteTracker object
+    private double[] position; // 3D Cartesian Coordinates
+    private double[] velocity; // Velocity components
+
+    /**
+     * Creator of initial representation.
+     */
+
+    /**
+     * Creator of initial representation.
+     */
+    private void createNewRep() {
+        this.position = new double[] { 0.0, 0.0, 0.0 };
+        this.velocity = new double[] { 0.0, 0.0, 0.0 };
+    }
+
+    private void createNewRep(double x, double y, double z, double vx,
+            double vy, double vz) {
         this.position = new double[] { x, y, z };
         this.velocity = new double[] { vx, vy, vz };
+    }
+
+    /*
+     * Constructors -----------------------------------------------------------
+     */
+
+    /**
+     * No-argument constructor.
+     */
+    public Satellite1() {
+        this.createNewRep();
+    }
+
+    /**
+     * Constructor with parameters for position and velocity.
+     */
+    public Satellite1(double x, double y, double z, double vx, double vy,
+            double vz) {
+        this.createNewRep(x, y, z, vx, vy, vz);
+    }
+
+    /*
+     * Standard methods -------------------------------------------------------
+     */
+
+    @Override
+    public final SatelliteTracker newInstance() {
+        try {
+            return this.getClass().getConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
+            throw new AssertionError(
+                    "Cannot construct object of type " + this.getClass());
+        }
+    }
+
+    @Override
+    public final void clear() {
+        this.createNewRep();
+    }
+
+    @Override
+    public final void transferFrom(SatelliteTracker source) {
+        assert source != null : "Violation of: source is not null";
+        assert source != this : "Violation of: source is not this";
+        assert source instanceof Satellite1 : ""
+                + "Violation of: source is of dynamic type NaturalNumber1L";
+        /*
+         * This cast cannot fail since the assert above would have stopped
+         * execution in that case.
+         */
+        Satellite1 localSource = (Satellite1) source;
+        this.position = localSource.position;
+        this.velocity = localSource.velocity;
+        localSource.createNewRep();
     }
 
     public final void updatePosition(double time) {
