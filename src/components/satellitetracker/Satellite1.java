@@ -35,17 +35,17 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     private double[] velocity; // Velocity components
 
     /**
-     * Creator of initial representation.
-     */
-
-    /**
-     * Creator of initial representation.
+     * Creator of initial representation (initialized to 0).
      */
     private void createNewRep() {
         this.position = new double[] { 0.0, 0.0, 0.0 };
         this.velocity = new double[] { 0.0, 0.0, 0.0 };
     }
 
+    /**
+     * Creator of initial representation (initialized to some user-prefered
+     * double values).
+     */
     /**
      * @param x
      *            initial x coordinate
@@ -83,7 +83,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     }
 
     /**
-     * Constructor with parameters for position and velocity.
+     * Constructor from double (with parameters for position and velocity).
      */
     public Satellite1(double x, double y, double z, double vx, double vy,
             double vz) {
