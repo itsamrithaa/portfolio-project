@@ -13,8 +13,9 @@ public interface SatelliteTracker extends SatelliteTrackerKernel {
      * @param mass
      *            mass of {@code this} in kilograms
      * @updates this
-     * @requires mass > 0 and this.vx is initialized and this.vy is initialized
-     *           and this.vz is initialized
+     * @requires mass > 0 and mass is in kilograms (kg) and force is in newtons
+     *           (kg*m/s) and direction is in degrees and this.velocity is not
+     *           null
      * @ensures this.vx = #this.vx + (force / mass) * cos(direction) this.vy =
      *          #this.vy + (force / mass) * sin(direction)
      */
