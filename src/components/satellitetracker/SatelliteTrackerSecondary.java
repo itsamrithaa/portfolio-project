@@ -1,7 +1,10 @@
 package components.satellitetracker;
 
+<<<<<<< Updated upstream
 import java.util.Objects;
 
+=======
+>>>>>>> Stashed changes
 /**
  * Layered implementations of secondary methods for {@code SatelliteTracker}.
  */
@@ -9,6 +12,7 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
 
     // Constants
     protected static final double G = 6.67430e-11; // Gravitational constant
+<<<<<<< Updated upstream
     protected static final double M = 5.972e24;    // Mass of Earth (kg)
     protected static final double PI = Math.PI;
 
@@ -47,6 +51,103 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
         return 2 * PI * Math.sqrt(Math.pow(radius, 3) / (G * M));
     }
 
+=======
+    protected static final double M = 5.972e24; // Mass of Earth (kg)
+    protected static final double PI = Math.PI;
+
+    /*
+     * Common methods (from Object)
+     */
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    @Override
+    public final boolean equals(Object obj) {
+        boolean isEqual = false;
+        if (this == obj) {
+            isEqual = true;
+        }
+
+        SatelliteTracker objCasted = (SatelliteTracker) obj;
+
+        if (!(objCasted instanceof SatelliteTracker)
+                && (this.getLiveLocation() != objCasted.getLiveLocation())
+                && (this.getVelocity() != objCasted.getVelocity())
+                && !objCasted.orbitsEarth()) {
+            isEqual = false;
+        }
+        return isEqual;
+    }
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    @Override
+    public int hashCode() {
+        final int sample = 3;
+        final int a = 59;
+        final int b = 17;
+        int result = 0;
+        int n = 0;
+        double[] velocity = this.getVelocity();
+
+        while (n < sample && n < velocity.length) {
+            double v = velocity[n];
+            int vHash = (int) (v * 1000); // scale
+            result = a * result + b * vHash;
+            n++;
+        }
+
+        return result;
+    }
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    @Override
+    public final String toString() {
+        double[] pos = this.getLiveLocation();
+        double[] vel = this.getVelocity();
+        StringBuilder returnStr = new StringBuilder();
+        returnStr.append("<Position: ");
+        returnStr.append(pos[0]).append(", ").append(pos[1]).append(", ")
+                .append(pos[2]);
+        returnStr.append(" | Velocity: ");
+        returnStr.append(vel[0]).append(", ").append(vel[1]).append(", ")
+                .append(vel[2]);
+        returnStr.append(">");
+
+        return returnStr.toString();
+    }
+
+    /*
+     * Other non-kernel methods -----------------------------------------------
+     */
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    @Override
+    public final void adjustVelocity(double force, double direction,
+            double mass) {
+        assert mass > 0 : "Violation of: mass > 0";
+        assert this.getVelocity() != null : "Violation of: this is initialized";
+
+        // Use kernel method getVelocity to extract velocity indirectly
+
+        double[] velocity = this.getVelocity();
+        double vx = velocity[0];
+        double vy = velocity[1];
+        double acceleration = force / mass;
+        vx += acceleration * Math.cos(Math.toRadians(direction));
+        vy = acceleration * Math.sin(Math.toRadians(direction));
+
+    }
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+    @Override
+    public final double estimateOrbitalPeriod() {
+        double[] pos = this.getLiveLocation();
+        double radius = Math
+                .sqrt(pos[0] * pos[0] + pos[1] * pos[1] + pos[2] * pos[2]);
+        return 2 * PI * Math.sqrt(Math.pow(radius, 3) / (G * M));
+    }
+
+    // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
+>>>>>>> Stashed changes
     @Override
     public final boolean willCollide(SatelliteTracker other) {
         double[] a = this.getLiveLocation();
@@ -61,6 +162,7 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
         return distance < threshold;
     }
 
+<<<<<<< Updated upstream
     /*
      * Standard methods (from Object)
      */
@@ -91,3 +193,6 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
     }
 }
 
+=======
+}
+>>>>>>> Stashed changes
