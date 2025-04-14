@@ -8,6 +8,20 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.04.14]
+
+### Added
+
+- Designed an abstract class for a SatelliteTracker object i.e. a satellite
+- Implemented enhanced and standard methods of SatelliteTracker using Kernel
+- Included assert statements to check pre-conditions of both enhanced and kernel methods used in implementation of enhanced or standard methods
+
+### Updated
+
+- Changed design to include implementation for getting velocity at the kernel as it is a primary feature of any satellite
+- Changed kernel design to include a orbitsEarth method as satellite must go around Earth and not other planetary bodies
+- Modified contract to ensure precision of expectations and guarantees of a method
+
 ## [2025.03.09]
 
 ### Added
