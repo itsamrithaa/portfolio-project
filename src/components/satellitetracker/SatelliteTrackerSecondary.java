@@ -68,7 +68,7 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
         assert this
                 .getLiveLocation() != null : "Violation of: this.x, this.y, this.z are initialized.";
         assert this
-                .getVelocity() != null : "Violation of: this.vx and this.vy are initialized.";
+                .getVelocity() != null : "Violation of: this.vx, this.vy, this.vz are initialized.";
 
         double[] pos = this.getLiveLocation();
         double[] vel = this.getVelocity();
