@@ -13,8 +13,9 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
      * @updates this
      * @requires time >= 0 and time is in seconds (s) and this.velocity is not
      *           null
-     * @ensures this.x = #this.x + this.vx * time this.y = #this.y + this.vy *
-     *          time this.z = #this.z + this.vz * time
+     * @ensures this.position[0] = #this.position[0] + this.velocity[0] * time
+     *          this.velocity[1] = #this.position[1] + this.velocity[1] * time
+     *          this.velocity[2] = #this.position[2] + this.velocity[2] * time
      */
     void updatePosition(double time);
 
@@ -23,9 +24,9 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
      *
      * @return an array of {@code double} describing the object's coordinates
      * @requires this.position is not null
-     * @ensures <pre> \result[0] = this.x
-     * \result[1] = this.y
-     * \result[2] = this.z
+     * @ensures <pre> \result[0] = this.position[0]
+     * \result[1] = this.position[1]
+     * \result[2] = this.position[2]
      * </pre>
      */
     double[] getLiveLocation();
@@ -46,7 +47,8 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
      *
      * @return an array of {@code double} values: [vx, vy, vz]
      * @requires this.velocity is not null
-     * @ensures result[0] = vx, \result[1] = vy, \result[2] = vz
+     * @ensures result[0] = this.velocity[0], \result[1] = this.velocity[1],
+     *          \result[2] = this.velocity[2]
      */
     double[] getVelocity();
 
