@@ -12,6 +12,24 @@ the following form: YYYY.0M.0D.
 
 ### Added
 
+- Designed kernel implementation for SatelliteTracker component
+- Declared new final constants for easier computations
+- Documented convention (representation i.e. 2 Arrays) and correspondence (regulations i.e. length of Array and units)
+- Created two types of constructors (1) no-argument which initializes to 0 for all params and (2) Constructor from double which allows users to set the params
+- Wrote two methods for createNewRep(), allowing users to create a Satellite in either ways (1 - no argument, 2 - double arguments)
+
+### Updated
+
+- Changed design to include a velocity and position component
+- Removed individual components in order to represent Satellite as two arrays
+- Updated kernel and enhanced contracts to match the new attributes of this
+- Extended Standard<SatelliteTracker> interface instead of Satellite1 to ensure proper hierarchy
+- Implemented kernel and overriden standard methods
+
+## [2025.04.14]
+
+### Added
+
 - Designed an abstract class for a SatelliteTracker object i.e. a satellite
 - Implemented enhanced and standard methods of SatelliteTracker using Kernel
 - Included assert statements to check pre-conditions of both enhanced and kernel methods used in implementation of enhanced or standard methods
