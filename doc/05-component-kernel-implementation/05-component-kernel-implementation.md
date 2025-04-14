@@ -119,7 +119,7 @@ Below is further rationale/explanation for the rubric items above:
 > discuss how that representation will be restricted (i.e., by convention)
 > and interpreted (i.e., by correspondence).
 
-I choose to represent SatelliteTracker with two arrays, one represents the position and the other represents it's velocity, because effectively that is how a satellite can be modeled when thinking in terms of software components. Other data structures would be a great fit if I was making a data structure but satellite tracker is more of a tracker that helps perform data analysis on real-time objects based on it's physical characteristics. The physical nature of this component makes it necessary to represent the fundamental/most essential features as a 2-tuple array.
+I choose to represent SatelliteTracker with two arrays, one represents the position and the other represents it's velocity, because effectively that is how a satellite can be modeled when thinking in terms of software components. Other data structures would be a great fit if I was making a data structure but satellite tracker is more of a tracker that helps perform data analysis on real-time objects based on it's physical characteristics. The physical nature of this component makes it necessary to represent the fundamental/most essential features as a 2-tuple array. The abstraction function (aka. the correspondence) for this 2-tuple array would be that first position maps to x, second to y, and third to z. Same repeats for velocity positions (vx, vy, vz).
 
 > To start making your kernel implementation, make a branch off of main in your
 > new repo called something like `kernel-implementation`. There are many ways to
