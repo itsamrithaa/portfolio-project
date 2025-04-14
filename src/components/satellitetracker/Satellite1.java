@@ -98,6 +98,16 @@ public class Satellite1 {
         return isClose; // Arbitrary threshold for collision risk
     }
 
+    public final boolean orbitsEarth() {
+        double[] pos = this.getLiveLocation();
+        double radius = Math.sqrt(pos[0] * pos[0] + pos[1] * pos[1] + pos[2] * pos[2]);
+        final double earthRadius = 6371.0; // in km
+        final double farthestOrbitRadius = 384400.0; // approx distance to Moon (km)
+
+        return radius > earthRadius && radius <= farthestOrbitRadius; // Satellite must be outside Earth's surface
+
+    }
+
     public static void main(String[] args) {
         Satellite1 sat1 = new Satellite1(7000, 0, 0, 0, 7.8, 0);
         Satellite1 sat2 = new Satellite1(7005, 0, 0, 0, 7.8, 0);

@@ -50,4 +50,24 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      * @ensures result[0] = vx, \result[1] = vy, \result[2] = vz
      */
     double[] getVelocity();
+
+    /**
+     * Reports whether this object is a satellite.
+     *
+     * @return {@code true} if this object represents a satellite, {@code false}
+     *         otherwise
+     * @ensures result = (this is a satellite object)
+     */
+    boolean isSatellite();
+
+    /**
+     * Reports whether this satellite is in orbit around Earth.
+     *
+     * @return {@code true} if this satellite orbits Earth, {@code false}
+     *         otherwise
+     * @requires this is a satellite
+     * @ensures result = (this is gravitationally bound to Earth)
+     */
+    boolean orbitsEarth();
+
 }
