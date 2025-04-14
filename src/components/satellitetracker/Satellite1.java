@@ -1,5 +1,15 @@
 package components.satellitetracker;
 
+/**
+ * {@code SatelliteTracker} represented as two 3-element arrays of doubles: one
+ * for position [x, y, z] and one for velocity [vx, vy, vz].
+ *
+ * @convention |position| = 3 and |velocity| = 3 and elements must be finite
+ *             real numbers. this.position[i] is in kilometers (km),
+ *             this.velocity[i] is in kilometers per second (km/s).
+ * @correspondence this = (position = [x, y, z], velocity = [vx, vy, vz])
+ */
+
 public class Satellite1 extends SatelliteTrackerSecondary {
 
     /*
@@ -36,6 +46,25 @@ public class Satellite1 extends SatelliteTrackerSecondary {
         this.velocity = new double[] { 0.0, 0.0, 0.0 };
     }
 
+    /**
+     * @param x
+     *            initial x coordinate
+     *
+     * @param y
+     *            initial y coordinate
+     *
+     * @param z
+     *            initial z coordinate
+     *
+     * @param vx
+     *            initial velocity in x direction
+     *
+     * @param vy
+     *            initial velocity in y direction
+     *
+     * @param vz
+     *            initial velocity in z direction
+     */
     private void createNewRep(double x, double y, double z, double vx,
             double vy, double vz) {
         this.position = new double[] { x, y, z };
@@ -80,12 +109,16 @@ public class Satellite1 extends SatelliteTrackerSecondary {
         this.createNewRep();
     }
 
+    /**
+     * @param source
+     *            another satellite to be copied from
+     */
     @Override
     public final void transferFrom(SatelliteTracker source) {
         assert source != null : "Violation of: source is not null";
         assert source != this : "Violation of: source is not this";
         assert source instanceof Satellite1 : ""
-                + "Violation of: source is of dynamic type NaturalNumber1L";
+                + "Violation of: source is of dynamic type Satellite1";
         /*
          * This cast cannot fail since the assert above would have stopped
          * execution in that case.
@@ -96,7 +129,16 @@ public class Satellite1 extends SatelliteTrackerSecondary {
         localSource.createNewRep();
     }
 
+    /**
+     *
+     * @param time
+     *            the other satellite object in comparison
+     */
     public final void updatePosition(double time) {
+        assert time >= 0 : "Violation of: time >= 0";
+        assert this.velocity != null
+                && this.velocity.length == 3 : "Violation of: this.velocity is not null";
+
         // Final Position = Initial position + (Velocity in that direction)*(time)
         this.position[0] += this.velocity[0] * time;
         this.position[1] += this.velocity[1] * time;
@@ -104,6 +146,8 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     }
 
     public final double[] getLiveLocation() {
+        assert this.position != null
+                && this.position.length == 3 : "Violation of: this.position is not null";
 
         /**
          * Returns live position in terms of x, y, z which are coordinates
@@ -115,6 +159,8 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     }
 
     public final double[] getVelocity() {
+        assert this.velocity != null
+                && this.velocity.length == 3 : "Violation of: this.velocity is not null";
         return new double[] { this.velocity[0], this.velocity[1],
                 this.velocity[2] };
     }
