@@ -2,7 +2,7 @@ package components.satellitetracker;
 
 import components.standard.Standard;
 
-public interface SatelliteTrackerKernel extends Standard<Satellite1> {
+public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
 
     /**
      * Updates the position of {@code this} based on the duration {@code this}
@@ -11,8 +11,8 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      * @param time
      *            duration for which satellite has moved in days
      * @updates this
-     * @requires time >= 0 and this.vx is initialized and this.vy is initialized
-     *           and this.vz is initialized
+     * @requires time >= 0 and time is in seconds (s) and this.velocity is not
+     *           null
      * @ensures this.x = #this.x + this.vx * time this.y = #this.y + this.vy *
      *          time this.z = #this.z + this.vz * time
      */
@@ -22,8 +22,7 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      * Reports the live location of {@code this} in x, y, z coordinates
      *
      * @return an array of {@code double} describing the object's coordinates
-     * @requires this.x is initialized and this.y is initialized and this.z is
-     *           initialized
+     * @requires this.position is not null
      * @ensures <pre> \result[0] = this.x
      * \result[1] = this.y
      * \result[2] = this.z
@@ -46,7 +45,7 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      * Reports the current velocity of the satellite in x, y, z directions.
      *
      * @return an array of {@code double} values: [vx, vy, vz]
-     * @requires this.vx, this.vy, and this.vz are initialized
+     * @requires this.velocity is not null
      * @ensures result[0] = vx, \result[1] = vy, \result[2] = vz
      */
     double[] getVelocity();
@@ -56,7 +55,6 @@ public interface SatelliteTrackerKernel extends Standard<Satellite1> {
      *
      * @return {@code true} if this satellite orbits Earth, {@code false}
      *         otherwise
-     * @requires this is a satellite
      * @ensures result = (this is gravitationally bound to Earth)
      */
     boolean orbitsEarth();
