@@ -2,7 +2,9 @@
 
 - **Name**: Amrithaa Ashok Kumar
 - **Dot Number**: ashokkumar.15
+
 - **Due Date**: 04/13
+
 
 ## Assignment Overview
 
@@ -46,6 +48,7 @@ access to the representation, so you must also implement them using the kernel
 methods only.
 
 ## Assignment Checklist
+
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -176,7 +179,11 @@ the following form: YYYY.0M.0D.
 ### Updated
 
 - Changed design to include getVelocity method in the Kernel class
+
 - Included assert statements to check required precondition clauses
+
+-
+
 
 ```
 
