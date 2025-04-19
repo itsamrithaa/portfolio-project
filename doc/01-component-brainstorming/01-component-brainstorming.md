@@ -196,8 +196,11 @@ will likely refine your design to make your implementation easier to use.
     - void updatePosition(double time)
     - double[] getLiveLocation(): in coordinates
     - boolean isStable(): ensures stable orbit
+    - double[] getVelocity(); reports the current velocity of the satellite object
+    - boolean orbitsEarth(); reports whether this satellite orbits Earth
   - **Secondary Methods**:
-    - void adjustVelocity(double force, double direction): Adjusts the object's velocity.
+    - void adjustVelocity(double force, double direction): Adjusts the object's velocity. Force and direction are parameters given by the user.
+      The getVelocity kernel method exists to ensure proper layering.
     - double estimate OrbitalPeriod(): Returns the estimated time for a full orbit.
     - boolean willCollide(SatelliteTracker object): Determines if two objects will collide.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
@@ -248,6 +251,10 @@ will likely refine your design to make your implementation easier to use.
     - Queue<String> getTopGenres() -> returns most listened-to genres
     - double calculateListeningTime() -> computes total listening time over a given period.
 
+    The component will be represented on a queue of listening history so that
+    data can be passed through the constructor,
+    allowing kernel methods to expose top songs and artists stats. This ensures there is no layering issues.
+
   - **Secondary Methods**:
     - String generateSummary()uses kernel methods to create a summary of the user’s music habits
     - Map<String,String> getArtistStats(String artist) Returns detailed stats for a given artist (e.g., total listens, top songs)
@@ -294,7 +301,7 @@ the following form: YYYY.0M.0D.
 ### Added
 
 - Designed a SatelliteTracker component
-- Designed a MovieRecommender 
+- Designed a MovieRecommender
 - Designed a MusicRecap component
 ```
 
