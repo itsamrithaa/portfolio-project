@@ -9,7 +9,7 @@ public class CollisionTracker {
     public static void main(String[] args) {
         // Two satellites in nearby orbits
         Satellite1 satA = new Satellite1(8000.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-        Satellite1 satB = new Satellite1(8000.0, 700.0, 700.0, 0.0, 0.0, 0.0);
+        Satellite1 satB = new Satellite1(8000.0, 300.0, 300.0, 0.0, 0.0, 0.0);
 
         System.out.println("Satellite A Position:");
         printArray(satA.getLiveLocation());
@@ -19,12 +19,6 @@ public class CollisionTracker {
 
         boolean collisionRisk = satA.willCollide(satB);
         System.out.println("Collision Risk Detected: " + collisionRisk);
-
-        // Transfer state and recheck
-        satA.transferFrom(satB);
-        System.out
-                .println("Satellite A state transferred from B. New position:");
-        printArray(satA.getLiveLocation());
     }
 
 }

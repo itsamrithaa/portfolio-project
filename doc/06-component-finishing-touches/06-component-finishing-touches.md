@@ -304,18 +304,18 @@ Take some time to fill them out honestly.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+My understanding of software development has increased significantly from working on this portfolio project as I got to see each and every layer of component development. The concept of layering between the kernels and abstract would definitely be blurry if I hadn't taken this project into my hands. I can now clearly explain the concepts surrounding interfaces and classes and the layering that happens within classes, including the extends and implements relationships. Implementing the standard methods and writing my own test cases has helped me understand that even a single line of code could make or break your component.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+Yes, I thought I'm a pro when it comes to the interface-class designing but little did I know that the introduction of a secondary class changed the way I thought about the whole layering. I went about this by looking at other OSU CSE API's to better understand how to work around these layers, especially while being cautious to not instantiate any objects in the abstract class which would violate the OSU disciplines. I also found it challenging to perfom testing without a reference testing and I tackled this problem by consulting with one of my senior peers and getting her advice. Another gap was properly overriding .equals() and .hashCode() — something that’s easy to overlook but critical for testing and object comparisons.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+Yes, it has changed for the better. As a data analytics major, I thought software development is not really my cup of tea. I also believed that it was not necessary to know this to manipulate data. However, by developing this component, I understood that you can develop softwares that could help perfom data analysis more efficiently. SatelliteTracker is essentially two sets of array storing the position and velocity of the satellite object so that we can retrieve and manipulate this data and minimize space traffic. I also definetely feel more confident to take on large-scale projects as this project gave a well-structured scaffold that I can adhere to while building my own projects in the future.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -323,29 +323,34 @@ Take some time to fill them out honestly.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+I developed a comprehensive understanding of software design and writing test cases. I also learned a lot about version control, pull requests, creating branches, etc. At first, using github was a little confusing, but once I got the rhythm of it, I saw the importance of being familiar with these tools which makes the entire development process easy. Aside from technical skills, I gained a deeper sense of creative design thinking when it comes to choosing correspondence and convention for the satellite. I developed more confidence in my ability to learn independently, especially a drive to actually understand and learn software development instead of memorizing the concepts for grades. Putting something like this together and going through the entire process, from brainstorming and proof of concept to kernel implementation has helped me connect the dots on my own and go back to the earlier stages to modify interfaces to match the implementation and vice versa.
+
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- Developed and documented a satellite tracking component in Java using design-by-contract principles
+- Implemented full JUnit test coverage for all kernel, secondary, and standard methods (100% method-level coverage)
+- Designed and applied orbital mechanics algorithms including orbital period estimation, velocity adjustment using force vectors, and collision detection
+- Managed source control using Git and published final project to GitHub with semantic versioning
+- Demonstrated functionality with structured use case simulations for orbital simulation and real-time collision alerts
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+It has given me confidence that space related software development and analytics is a viable and useful thing to do. While I’ve always been interested in astronomy/physics, this project has helped me realize my strength lies in computational modeling and data science and that I should take on this approach to my passion to thrive in my future career.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+- Contribute to open-source projects that involve simulations or scientific computing
+- Seek out data analytics internships or research with labs (e.g., NASA, space analytics teams, or computational physics groups)
+- Reach out to faculty mentors in data science, astronomy or even bio-statistics so that they could help guide me toward meaningful data-driven research projects/publications
 
 ### Changelog
-
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -360,16 +365,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
-## YYYY.MM.DD
+
+## [2025.04.21]
 
 ### Added
 
-- Designed test suite for <!-- insert name of component here --> component
-- Designed two different use cases for <!-- insert name of component here --> component
+- Designed test suite for `SatelliteTracker` component, including test cases for kernel, secondary, constructor and overriden standard methods.
+- Designed `CollisionTracker` and `OrbitalSimulation` to show `SatelliteTracker` in action
+- Introduced new updatePosition() implementation in concrete `Satellite1` class, overriding abstract class implementation
 
 ### Updated
 
-- Changed design to include ...
+- Changed design to include new constant `SECONDS_IN_DAY` for easier computations
+- Updated threshold values for accurate mathematical operation
+- Declared final double values for non-changing velocity values
+- Included test cases that cover edge/boundary, empty/zero, large, routine, challenging, and complex test cases
+- Refactored `equals` implementation to ensure the method accurately checks for object equality
+- Added illegalArgumentException to strictly check for pre-condition
+- Cleaned Javadoc CheckStyle errors
 
 ```
 

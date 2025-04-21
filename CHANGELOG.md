@@ -8,6 +8,25 @@ the following form: YYYY.0M.0D.
 
 ## [Unreleased]
 
+## [2025.04.21]
+
+### Added
+
+- Designed test suite for `SatelliteTracker` component, including test cases for kernel, secondary, constructor and overriden standard methods.
+- Designed `CollisionTracker` and `OrbitalSimulation` to show `SatelliteTracker` in action
+- Introduced new updatePosition() implementation in concrete `Satellite1` class, overriding abstract class implementation
+
+### Updated
+
+- Changed design to include new constant `SECONDS_IN_DAY` for easier computations
+- Updated threshold values for accurate mathematical operation
+- Declared final double values for non-changing velocity values
+- Included test cases that cover edge/boundary, empty/zero, large, routine, challenging, and complex test cases
+- Refactored `equals` implementation to ensure the method accurately checks for object equality
+- Added illegalArgumentException to strictly check for pre-condition
+- Cleaned Javadoc CheckStyle errors
+
+
 ## [2025.04.14]
 
 ### Added
