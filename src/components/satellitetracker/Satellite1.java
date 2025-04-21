@@ -14,15 +14,11 @@ package components.satellitetracker;
 public class Satellite1 extends SatelliteTrackerSecondary {
 
     /*
-     * Private members --------------------------------------------------------
-     */
-
-    /*
      * Added these constants to help with calculation of orbital speed and
      * period
      */
     private static final double PI = 3.14159265;
-    private static final double G = 6.67430e-11; //
+    private static final double G = 6.67430e-11;
     private static final double M = 5.972e24;
     private static final double GRAVITY = 9.81;
     private static final double EARTH_RADIUS_KM = 6371.0;
@@ -46,8 +42,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     /**
      * Creator of initial representation (initialized to some user-prefered
      * double values).
-     */
-    /**
+     *
      * @param x
      *            initial x coordinate
      *
@@ -84,7 +79,25 @@ public class Satellite1 extends SatelliteTrackerSecondary {
     }
 
     /**
-     * Constructor from double (with parameters for position and velocity).
+     * Constructor from double (with parameters for position and velocity). *
+     *
+     * @param x
+     *            initial x coordinate
+     *
+     * @param y
+     *            initial y coordinate
+     *
+     * @param z
+     *            initial z coordinate
+     *
+     * @param vx
+     *            initial velocity in x direction
+     *
+     * @param vy
+     *            initial velocity in y direction
+     *
+     * @param vz
+     *            initial velocity in z direction
      */
     public Satellite1(double x, double y, double z, double vx, double vy,
             double vz) {
@@ -135,6 +148,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
      * @param time
      *            the other satellite object in comparison
      */
+    @Override
     public final void updatePosition(double time) {
         assert time >= 0 : "Violation of: time >= 0";
         assert this.velocity != null
@@ -146,6 +160,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
         this.position[2] += this.velocity[2] * time;
     }
 
+    @Override
     public final double[] getLiveLocation() {
         assert this.position != null
                 && this.position.length == 3 : "Violation of: this.position is not null";
@@ -159,6 +174,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
                 this.position[2] };
     }
 
+    @Override
     public final double[] getVelocity() {
         assert this.velocity != null
                 && this.velocity.length == 3 : "Violation of: this.velocity is not null";
@@ -166,6 +182,7 @@ public class Satellite1 extends SatelliteTrackerSecondary {
                 this.velocity[2] };
     }
 
+    @Override
     public final boolean isStable() {
 
         boolean isStable = false;
@@ -174,14 +191,16 @@ public class Satellite1 extends SatelliteTrackerSecondary {
         double speed = Math.sqrt(this.velocity[0] * this.velocity[0]
                 + this.velocity[1] * this.velocity[1]
                 + this.velocity[2] * this.velocity[2]);
-
-        if (speed >= 7.8 && speed <= 11.2) {
+        final double maxVelocity = 11.2;
+        final double minVelocity = 7.8;
+        if (speed >= minVelocity && speed <= maxVelocity) {
             isStable = true;
             // Rough LEO to escape velocity range (km/s)
         }
         return isStable;
     }
 
+    @Override
     public final boolean orbitsEarth() {
 
         boolean isWithinOrbit = false;
@@ -199,6 +218,21 @@ public class Satellite1 extends SatelliteTrackerSecondary {
             isWithinOrbit = true;
         }
         return isWithinOrbit;
+
+    }
+
+    /**
+     * Overriden methods
+     */
+
+    @Override
+    public void adjustVelocity(double force, double direction, double mass) {
+        assert mass > 0 : "Violation of: mass > 0";
+        assert this.getVelocity() != null : "Violation of: this is initialized";
+
+        double acceleration = force / mass;
+        this.velocity[0] += acceleration * Math.cos(Math.toRadians(direction));
+        this.velocity[1] += acceleration * Math.sin(Math.toRadians(direction));
 
     }
 }

@@ -4,7 +4,7 @@ public interface SatelliteTracker extends SatelliteTrackerKernel {
 
     /**
      * Updates the velocity of {@code this} based on the force applied,
-     * direction and mass of {@code this} has moved in space
+     * direction and mass of {@code this} has moved in space.
      *
      * @param force
      *            force applied on {@code this} in newtons
@@ -23,7 +23,7 @@ public interface SatelliteTracker extends SatelliteTrackerKernel {
 
     /**
      * Returns the estimated time it takes for {@code this} to complete a full
-     * orbit
+     * orbit.
      *
      * @return the time it takes in days to orbit Earth as a {@code double}
      * @requires {@code this} orbits Earth
@@ -36,7 +36,7 @@ public interface SatelliteTracker extends SatelliteTrackerKernel {
 
     /**
      * Reports whether {@code this} will collide with {@code other} based on
-     * distance threshold
+     * distance threshold.
      *
      * @param other
      *            the other satellite object in comparison
