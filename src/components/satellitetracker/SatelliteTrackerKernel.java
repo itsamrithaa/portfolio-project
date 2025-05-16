@@ -6,7 +6,7 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
 
     /**
      * Updates the position of {@code this} based on the duration {@code this}
-     * has moved in space
+     * has moved in space.
      *
      * @param time
      *            duration for which satellite has moved in days
@@ -20,7 +20,7 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
     void updatePosition(double time);
 
     /**
-     * Reports the live location of {@code this} in x, y, z coordinates
+     * Reports the live location of {@code this} in x, y, z coordinates.
      *
      * @return an array of {@code double} describing the object's coordinates
      * @requires this.position is not null
@@ -33,7 +33,7 @@ public interface SatelliteTrackerKernel extends Standard<SatelliteTracker> {
 
     /**
      * Reports whether satellite is in stable condition based on threshold
-     * defining stability
+     * defining stability.
      *
      * @return true iff {@code this} is stable
      * @requires {@code this} is a satellite of Earth

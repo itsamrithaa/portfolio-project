@@ -5,10 +5,13 @@ package components.satellitetracker;
  */
 public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
 
-        // Constants
-        protected static final double G = 6.67430e-11; // Gravitational constant
-        protected static final double M = 5.972e24; // Mass of Earth (kg)
+        /**
+         * Constants.
+         */
+        protected static final double G = 6.67430e-11; // Gravitational constant.
+        protected static final double M = 5.972e24; // Mass of Earth (kg).
         protected static final double PI = Math.PI;
+        protected static final double SECONDS_IN_DAY = 86400.0;
 
         /*
          * Common methods (from Object)
@@ -18,24 +21,41 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
         @Override
         public final boolean equals(Object obj) {
                 // Contract precondition from kernel
-                assert this.getLiveLocation() != null : "Violation of: this.x, this.y, this.z are initialized.";
+                assert this.getLiveLocation() != null : "Violation of: this.x,"
+                                + " this.y, this.z are initialized.";
 
-                assert this.getVelocity() != null : "Violation of: this.vx and this.vy are initialized.";
-                boolean isEqual = false;
+                assert this.getVelocity() != null : "Violation of: this.vx"
+                                + " and this.vy are initialized.";
+
+                boolean isEqual = true;
+
                 if (this == obj) {
                         isEqual = true;
                 }
 
-                SatelliteTracker objCasted = (SatelliteTracker) obj;
-
-                if (!(objCasted instanceof SatelliteTracker)
-                                && (this.getLiveLocation() != objCasted
-                                                .getLiveLocation())
-                                && (this.getVelocity() != objCasted
-                                                .getVelocity())
-                                && !objCasted.orbitsEarth()) {
+                if (!(obj instanceof SatelliteTracker)) {
                         isEqual = false;
                 }
+
+                SatelliteTracker objCasted = (SatelliteTracker) obj;
+
+                double[] pos1 = this.getLiveLocation();
+                double[] vel1 = this.getVelocity();
+                double[] pos2 = objCasted.getLiveLocation();
+                double[] vel2 = objCasted.getVelocity();
+
+                for (int i = 0; i < pos1.length; i++) {
+                        if (pos1[i] != pos2[i]) {
+                                isEqual = false;
+                        }
+                }
+
+                for (int i = 0; i < vel1.length; i++) {
+                        if (vel1[i] != vel2[i]) {
+                                isEqual = false;
+                        }
+                }
+
                 return isEqual;
         }
 
@@ -88,19 +108,12 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
 
         // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
         @Override
-        public final void adjustVelocity(double force, double direction,
+        public void adjustVelocity(double force, double direction,
                         double mass) {
                 assert mass > 0 : "Violation of: mass > 0";
                 assert this.getVelocity() != null : "Violation of: this is initialized";
 
-                // Use kernel method getVelocity to extract velocity indirectly
-
-                double[] velocity = this.getVelocity();
-                double vx = velocity[0];
-                double vy = velocity[1];
-                double acceleration = force / mass;
-                vx += acceleration * Math.cos(Math.toRadians(direction));
-                vy = acceleration * Math.sin(Math.toRadians(direction));
+                // Implemented in concrete class
 
         }
 
@@ -113,7 +126,9 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
                 double[] pos = this.getLiveLocation();
                 double radius = Math.sqrt(pos[0] * pos[0] + pos[1] * pos[1]
                                 + pos[2] * pos[2]);
-                return 2 * PI * Math.sqrt(Math.pow(radius, 3) / (G * M));
+                return (2 * Math.PI * Math
+                                .sqrt(Math.pow(radius * 1000.0, 3) / (G * M)))
+                                / SECONDS_IN_DAY;
         }
 
         // CHECKSTYLE: ALLOW THIS METHOD TO BE OVERRIDDEN
@@ -123,6 +138,10 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
                 assert this.orbitsEarth() != false || other
                                 .orbitsEarth() != false : "Violation of: this and other are satellites of Earth";
                 assert this.getLiveLocation() != null : "Violation of: this.x, this.y, this.z are initialized.";
+                if (!this.orbitsEarth() || !other.orbitsEarth()) {
+                        throw new IllegalArgumentException(
+                                        "Both satellites must be orbiting Earth.");
+                }
 
                 double[] a = this.getLiveLocation();
                 double[] b = other.getLiveLocation();
@@ -132,7 +151,7 @@ public abstract class SatelliteTrackerSecondary implements SatelliteTracker {
                 double dz = a[2] - b[2];
                 double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-                final double threshold = 192.2; // Implement with exact threshold in concrete class
+                final double threshold = 500;
                 return distance < threshold;
         }
 
