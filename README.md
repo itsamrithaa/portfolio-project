@@ -1,85 +1,46 @@
-# Portfolio Project
+# SatelliteTracker Component
 
-The purpose of this repo is to provide a framework for creating your own
-component in the software sequence discipline. If you were unsure whether
-or not to make your own, consider the following testimonial:
+## Project Overview
+`SatelliteTracker` is a robust Java software component designed to model, simulate, and analyze satellite trajectories. Developed using **Design-by-Contract** principles, this project bridges the gap between raw data analytics and software engineering by providing a layered architecture for managing orbital positions and velocities.
 
-> I really enjoyed the portfolio project! It gave me a stronger understanding
-> of the OSU software discipline while also giving me the flexibility to
-> design something that reflected my interests. This made the experience
-> rewarding and enjoyable as I created a product I was proud of!
+The component utilizes dual-array representations to store position and velocity data, facilitating real-time collision detection and orbital simulation to help minimize space traffic.
 
-## Recommended Steps to Get Started
+## Key Features
+* **Orbital Mechanics Engine:** Implementation of algorithms for orbital period estimation and velocity adjustment using force vectors.
+* **Collision Detection:** Integrated `CollisionTracker` to provide real-time alerts based on proximity thresholds.
+* **Layered Architecture:** Clear separation between Kernel and Abstract layers, adhering to strict OSU CSE disciplines (avoiding object instantiation in abstract classes).
+* **Data Integrity:** Rigorous implementation of `.equals()` and `.hashCode()` alongside `IllegalArgumentException` handling for robust pre-condition checking.
+* **Full Test Suite:** 100% method-level coverage using JUnit, testing edge/boundary, empty, and complex routine cases.
 
-When starting your portfolio project, the following steps should make your life
-a bit easier.
+## Technical Skills (Resume Highlights)
+* **Software Design:** Developed and documented a satellite tracking component in Java using **Design-by-Contract** principles.
+* **Quality Assurance:** Implemented full **JUnit** test coverage for kernel, secondary, and standard methods (100% method-level coverage).
+* **Scientific Computing:** Designed and applied orbital mechanics algorithms including orbital period estimation, velocity adjustment using force vectors, and collision detection.
+* **Version Control:** Managed source control using **Git** and published final project to GitHub with semantic versioning and structured pull requests.
+* **Simulation & Modeling:** Demonstrated functionality with structured use case simulations for orbital movement and real-time collision alerts.
 
-### Step 1: Create a Repo From This Template
+## Personal Reflection
+Through the development of this portfolio project, I bridged my background in **Honors Data Analytics and Astronomy** with **Software Development**.
 
+* **Design Philosophy:** I moved from a "scripting" mindset to a "component" mindset, learning the intricacies of interfaces, abstract classes, and the layering that happens within classes.
+* **Problem Solving:** Challenged by the complexities of secondary class layering and testing without a reference, I utilized peer mentorship and OSU CSE API research to ensure architectural integrity.
+* **Career Trajectory:** This project confirmed that computational modeling and space-related analytics is a viable career path. I now feel confident taking on large-scale projects using a well-structured scaffold for future development.
 
-Assuming you're reading this README from GitHub, you can make use of this
-repo by clicking the `Use this template` button in the top-right corner of
-this page. If you can't find the button, [this link][use-this-template]
-should work as well. Personally, I would recommend using the
-`Create a new repository` option, which will allow you to name the
-repository after your component. Given that you will be submitting pull
-requests to me through Carmen, you'll want to make sure your repository
-is public. Then, you can click `Create repository`. After that, you can
-go through all the usual steps of cloning a repository on your system to
-get to work. I use GitHub Desktop to clone projects, and it has a nice
-feature of letting you open a repo directly in VSCode from the
-`Repository` menu.
+## Future Roadmap
+* **Open Source:** Contribute to open-source projects involving scientific computing or scientific simulations.
+* **Professional Development:** Seek out data analytics internships or research roles within labs such as NASA or computational physics groups.
+* **Research:** Reach out to faculty mentors in Data Science and Astronomy to pursue meaningful data-driven research projects and publications.
 
-### Step 2: Install Recommended Plugins
+## How to Use
+1.  **Clone the Repository:** `git clone [your-repository-url]`
+2.  **Explore Simulations:** See the tracker in action by reviewing `OrbitalSimulation.java` and `CollisionTracker.java`.
+3.  **Run Tests:** Execute the JUnit test suite to verify kernel and secondary method integrity.
 
+## Changelog
+All notable changes to this project are documented in the [CHANGELOG.md](./CHANGELOG.md) file, adhering to [Calendar Versioning](https://calver.org/) and [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) standards.
 
-When you open VSCode with this project, you should get a notification in the
-bottom right corner that there are some recommended extensions to install.
-Click install all. If you ignored this message or it never came up, feel free
-to press CTRL+SHIFT+P and type "Show Recommended Extensions". Install all of the
-extensions listed.
-
-### Step 3: Install the Latest JDK
-
-
-If you do not have an available JDK on your system, you may be prompted to
-install one by VSCode. The default seems to be Red Hat's OpenJDK, which seems to
-require you to register for an account or to install on the command line.
-Regardless, there is no mac support. As a result, I would just recommend
-installing the latest JDK [directly from Oracle's site][jdk-downloads].
-
-### Step 4: Add Key Libraries to Project
-
-
-As you are probably all aware at this point, you need the components jar to get
-anything running. My advice is to [download it from here][components-jar]. Then,
-drop it into the `lib` folder in the project. Git automatically ignores anything
-you put here by default, so don't worry about committing it to version control.
-
-Similarly, you will need the testing APIs (e.g., JUnit). Perhaps the easiest way
-to include them in your project is to click the beaker symbol in the left
-sidebar; it's right below the extensions button which looks like four squares.
-If you do not see this button, try creating a Java file in `src`. From there,
-you can click "Enable Java Tests" and then click "JUnit" from the
-dropdown. That's it! You should now see the two JUnit libraries in the lib
-folder.
-
-**Note**: if you're using VSCode for class projects, you might be wondering
-why you never had to do this. In general, it's bad practice to commit binaries
-to version control. However, we have no way of managing dependencies with the
-custom `components.jar`, so I included them directly in the template. I did not
-include them here, so you could see how it might be done from scratch. If at any
-point you're struggling with Step 3, just copy the lib folder from the monorepo
-template.
-
-## Next Steps
-
-
-Now that you have everything setup, you can begin crafting your component. There
-will be deadlines for each step in Carmen, but you're free to complete each step
-as early as you'd like. To start, you'll want to visit the [doc](doc/) directory
-for each assignment file.
-
-[components-jar]: https://cse22x1.engineering.osu.edu/common/components.jar
-[jdk-downloads]: https://www.oracle.com/java/technologies/downloads/
-[use-this-template]: https://github.com/new?template_name=portfolio-project&template_owner=jrg94
+## Credits & Acknowledgments
+* **Framework & Template:** This project was developed using the [Portfolio Project Template](https://github.com/jrg94/portfolio-project) created by **Jeremy Grifski** (@jrg94).
+* **Instructional Support:** Special thanks to the **Ohio State University Software Engineering Department** for the architectural disciplines and the `components.jar` library.
+* **Peer Mentorship:** Acknowledgment to my senior peers at OSU who provided guidance on testing strategies and reference implementations.
+* **Author:** Amrithaa Ashok Kumar – Honors Data Analytics & Astronomy, The Ohio State University.
